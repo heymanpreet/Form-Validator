@@ -17,7 +17,7 @@ const Users_Data: Users[] = [
   {name: 'Piyush', age: 23, gender: 'F', role: 'User'},
   {name: 'Kunal', age: 24, gender: 'M', role: 'User'},
   {name: 'Manpreet', age: 25, gender: 'M', role: 'Admin'},
-  {name: 'Amita', age: 26, gender: 'F', role: 'User'}
+  {name: 'Jaspreet', age: 26, gender: 'F', role: 'User'}
 ];
 
 @Component({
@@ -32,13 +32,14 @@ export class AppComponent implements OnInit {
   displayedColumns: string[] = ['name', 'age', 'gender', 'role'];
   dataSource = new MatTableDataSource(Users_Data);
 
-  constructor(private fb:FormBuilder){}
+  constructor(private fb:FormBuilder,private location: Location,private router: Router){}
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['',[Validators.required,Validators.email]],
       password: ['',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]],
       agree:[false,Validators.requiredTrue]
     })
+    this.location.replaceState("/login");
   } 
 
   get email() {
@@ -51,6 +52,15 @@ export class AppComponent implements OnInit {
 
   selectedView(view) {
     this.viewSelected = view;
+    if(view == 'register') {
+      this.location.replaceState("/register");
+    } 
+    if(view == 'login') {
+      this.location.replaceState("/login");
+    } 
+    if(view == 'profile') {
+      this.location.replaceState("/profile");
+    } 
   }
 
   applyFilter(filterValue: string) {

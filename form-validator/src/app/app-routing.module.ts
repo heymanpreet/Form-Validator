@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'register', component: AppComponent  },
   { path: 'login', component: AppComponent  },
   { path: 'profile', component: AppComponent  },
+  { path: '', component: AppComponent  }
 ];
 
 @NgModule({

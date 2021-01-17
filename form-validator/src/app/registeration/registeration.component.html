@@ -1,6 +1,8 @@
 <mat-card class="registration-card">
   <mat-card-header>
-    <mat-card-title><h2>Registration Form</h2></mat-card-title>
+    <mat-card-title>
+      <h2>Registration Form</h2>
+    </mat-card-title>
   </mat-card-header>
   <mat-card-content>
 
@@ -34,9 +36,9 @@
 
       <mat-form-field>
         <!-- <label for="name">Name:</label> -->
-        <input matInput placeholder="Name" formControlName="name" autocomplete="off">
+        <input type="text" matInput placeholder="Name" formControlName="name">
         <mat-error *ngIf="name.invalid && name.touched" class="has-text-danger">
-          Please Enter a Valid Name
+          Please Enter a Valid Name(only Text allowed)
         </mat-error>
       </mat-form-field>
 
@@ -48,9 +50,9 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="password" formControlName="password" autocomplete="off">
+        <input matInput placeholder="password" formControlName="password" autocomplete="off" type="password">
         <mat-error *ngIf="password.invalid && password.touched" class="has-text-danger">
-          Please Enter a Valid Password
+          Please Enter a Valid Password(It must contain a number & alphabet)
         </mat-error>
       </mat-form-field>
 
@@ -61,21 +63,17 @@
         </mat-error>
       </mat-form-field>
 
-      <!-- <mat-form-field>
-    <input matInput placeholder="Gender" formControlName="gender" autocomplete="off">
+      <div>
+        <label>Gender: </label>
+        <mat-radio-group formControlName="gender">
+          <mat-radio-button value="male">Male</mat-radio-button>
+          <mat-radio-button name="gender" value="female">Female</mat-radio-button>
+        </mat-radio-group>
+        <mat-error *ngIf="gender.invalid && gender.touched" class="has-text-danger">
+          Please select a Gender
+        </mat-error>
+      </div>
 
-    <mat-error *ngIf="gender.invalid && gender.touched" class="has-text-danger">
-      Please select a Gender
-    </mat-error>
-  </mat-form-field> -->
-      <!-- <mat-form-field> -->
-      <mat-radio-group formControlName="gender">
-        <mat-radio-button value="male">Male</mat-radio-button>
-        <mat-radio-button name="gender" value="female">Female</mat-radio-button>
-      </mat-radio-group>
-      <mat-error *ngIf="gender.invalid && gender.touched" class="has-text-danger">
-        Please select a Gender
-      </mat-error>
 
       <mat-form-field>
         <mat-select placeholder="Tech Stack" [formControl]="techStack" [(value)]="selectedTechStack" multiple>
@@ -83,11 +81,11 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-checkbox formControlName="agree" color="primary">Are you sure?</mat-checkbox>
+      <mat-checkbox formControlName="agree" color="primary">I Agree?</mat-checkbox>
 
-      <!-- <hr> -->
+      <hr>
 
-      <button mat-raised-button [disabled]="registerForm.invalid || loading" color="primary">Let's Do it!</button>
+      <button mat-raised-button [disabled]="registerForm.invalid" color="primary">Register</button>
 
     </form>
   </mat-card-content>

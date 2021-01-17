@@ -3,9 +3,10 @@ form {
     flex-direction: column;
 }
 
-.registration-card {
-    /* max-width: 70%; */
-}
 .mat-card-header {
     justify-content: center;
 }
+
+mat-card .mat-radio-button {
+    margin: 0 12px;
+  }
