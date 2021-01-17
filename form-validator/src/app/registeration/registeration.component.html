@@ -1,0 +1,95 @@
+<mat-card class="registration-card">
+  <mat-card-header>
+    <mat-card-title><h2>Registration Form</h2></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+
+    <form [formGroup]="registerForm">
+      Value: {{ registerForm.value | json }}
+      <!-- <ul>
+    <li>Valid:
+      <mat-chip selected="true" [color]="registerForm.valid ? 'accent' : 'warn'">{{ registerForm.valid }}</mat-chip>
+    </li>
+    <li>Invalid:
+      <mat-chip selected="true" [color]="registerForm.invalid ? 'accent' : 'warn'">{{ registerForm.invalid }}</mat-chip>
+    </li>
+    <li>Dirty:
+      <mat-chip selected="true" [color]="registerForm.dirty ? 'accent' : 'warn'">{{ registerForm.dirty }}</mat-chip>
+    </li>
+    <li>Pristine:
+      <mat-chip selected="true" [color]="registerForm.pristine ? 'accent' : 'warn'">{{ registerForm.pristine }}</mat-chip>
+    </li>
+    <li>Touched:
+      <mat-chip selected="true" [color]="registerForm.touched ? 'accent' : 'warn'">{{ registerForm.touched }}</mat-chip>
+    </li>
+    <li>Untouched:
+      <mat-chip selected="true" [color]="registerForm.untouched ? 'accent' : 'warn'">{{ registerForm.untouched }}</mat-chip>
+    </li>
+    <li>Pending:
+      <mat-chip selected="true" [color]="registerForm.pending ? 'accent' : 'warn'">{{ registerForm.pending }}</mat-chip>
+    </li>
+  </ul> -->
+
+      <hr>
+
+      <mat-form-field>
+        <!-- <label for="name">Name:</label> -->
+        <input matInput placeholder="Name" formControlName="name" autocomplete="off">
+        <mat-error *ngIf="name.invalid && name.touched" class="has-text-danger">
+          Please Enter a Valid Name
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="email" formControlName="email" autocomplete="off">
+        <mat-error *ngIf="email.invalid && email.touched" class="has-text-danger">
+          Please Enter a Valid Email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="password" formControlName="password" autocomplete="off">
+        <mat-error *ngIf="password.invalid && password.touched" class="has-text-danger">
+          Please Enter a Valid Password
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="DOB" formControlName="dob" autocomplete="off">
+        <mat-error *ngIf="dob.invalid && dob.touched" class="has-text-danger">
+          Please Enter a Valid Age
+        </mat-error>
+      </mat-form-field>
+
+      <!-- <mat-form-field>
+    <input matInput placeholder="Gender" formControlName="gender" autocomplete="off">
+
+    <mat-error *ngIf="gender.invalid && gender.touched" class="has-text-danger">
+      Please select a Gender
+    </mat-error>
+  </mat-form-field> -->
+      <!-- <mat-form-field> -->
+      <mat-radio-group formControlName="gender">
+        <mat-radio-button value="male">Male</mat-radio-button>
+        <mat-radio-button name="gender" value="female">Female</mat-radio-button>
+      </mat-radio-group>
+      <mat-error *ngIf="gender.invalid && gender.touched" class="has-text-danger">
+        Please select a Gender
+      </mat-error>
+
+      <mat-form-field>
+        <mat-select placeholder="Tech Stack" [formControl]="techStack" [(value)]="selectedTechStack" multiple>
+          <mat-option *ngFor="let tech of techStackData" [value]="tech.value">{{tech.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-checkbox formControlName="agree" color="primary">Are you sure?</mat-checkbox>
+
+      <!-- <hr> -->
+
+      <button mat-raised-button [disabled]="registerForm.invalid || loading" color="primary">Let's Do it!</button>
+
+    </form>
+  </mat-card-content>
+
+</mat-card>

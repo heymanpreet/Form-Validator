@@ -1,0 +1,11 @@
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-card {
+    /* max-width: 70%; */
+}
+.mat-card-header {
+    justify-content: center;
+}
