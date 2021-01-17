@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 })
 export class RegisterationComponent implements OnInit {
   registerForm: FormGroup;
+  @Output() registerData: EventEmitter<number> =   new EventEmitter();
+
   techStackData: Array<object> = [
     { name: 'Angular', value: 'angular' },
     { name: 'React', value: 'react' },
@@ -16,6 +18,7 @@ export class RegisterationComponent implements OnInit {
     { name: 'MYSQL', value: 'mysql' },
   ];
   selectedTechStack=[];
+  registrationInfo: any;
   constructor(private fb:FormBuilder){}
 
   ngOnInit() {
@@ -23,10 +26,9 @@ export class RegisterationComponent implements OnInit {
       name: ['',[Validators.required,Validators.pattern('[a-zA-Z]+'),Validators.maxLength(50)]],
       email: ['',[Validators.required,Validators.email,Validators.maxLength(50)]],
       password: ['',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]],
-      dob:['',[Validators.required,Validators.min(21)]],
-      techStack:[this.selectedTechStack],
-      gender:['',[Validators.required]],
-      agree:[false,Validators.requiredTrue]
+      age:['',[Validators.required,Validators.min(21)]],
+      techStack:[this.selectedTechStack, [Validators.required]],
+      gender:['',[Validators.required]]
     })
   }
 
@@ -42,8 +44,8 @@ export class RegisterationComponent implements OnInit {
     return this.registerForm.get('password');
   }
 
-  get dob() {
-    return this.registerForm.get('dob');
+  get age() {
+    return this.registerForm.get('age');
   }
 
   get gender() {
@@ -52,6 +54,13 @@ export class RegisterationComponent implements OnInit {
 
   get techStack() {
     return this.registerForm.get('techStack');
+  }
+
+  register(data) {
+    this.registrationInfo = data;
+    this.registerData.emit(this.registrationInfo);
+    console.log(this.registrationInfo);
+    
   }
 
 }

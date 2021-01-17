@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import {Location} from '@angular/common'; 
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatTableDataSource} from '@angular/material';
+import { RegisterationComponent } from './registeration/registeration.component';
 
 export interface Users {
   name: string;
@@ -31,13 +32,13 @@ export class AppComponent implements OnInit {
   viewSelected: any = 'login';
   displayedColumns: string[] = ['name', 'age', 'gender', 'role'];
   dataSource = new MatTableDataSource(Users_Data);
+  @ViewChild(RegisterationComponent) registerData: RegisterationComponent;
 
   constructor(private fb:FormBuilder,private location: Location,private router: Router){}
   ngOnInit() {
     this.loginForm = this.fb.group({
       email: ['',[Validators.required,Validators.email]],
-      password: ['',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]],
-      agree:[false,Validators.requiredTrue]
+      password: ['',[Validators.required,Validators.pattern('^(?=.*[0-9])(?=.*[a-zA-Z])([a-zA-Z0-9]+)$')]]
     })
     this.location.replaceState("/login");
   } 
@@ -60,6 +61,7 @@ export class AppComponent implements OnInit {
     } 
     if(view == 'profile') {
       this.location.replaceState("/profile");
+      // console.log(this.registerData.registrationInfo);
     } 
   }
 

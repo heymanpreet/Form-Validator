@@ -83,6 +83,21 @@ mat-tab {
     display: flex;
     flex-direction: column;
   }
-.mat-form-field,.details {
+.mat-form-field,.details,button {
     margin: 0 12px;
+    max-width: 40%;
+    align-self: center;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+.mat-card-content {
+    align-items: center;
+}
+
+.details{
+    margin: 10px 20px;
+    padding: 10px;
+    font-size: medium;
 }

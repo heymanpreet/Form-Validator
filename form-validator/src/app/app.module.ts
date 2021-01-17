@@ -4,7 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule,MatSidenavModule,MatToolbarModule,MatInputModule,MatSelectModule,MatChipsModule, MatRadioModule,
-MatTabsModule,MatTableModule, MatCardModule} from '@angular/material';
+MatTabsModule,MatTableModule, MatCardModule, MatDatepickerModule,MatNativeDateModule} from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { RegisterationComponent } from './registeration/registeration.component';
 
@@ -29,6 +29,8 @@ import { RegisterationComponent } from './registeration/registeration.component'
     MatTableModule,
     MatTabsModule,
     MatCardModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AppRoutingModule
   ],
   providers: [],

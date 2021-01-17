@@ -1,12 +1,22 @@
 form {
     display: flex;
     flex-direction: column;
+    align-self: center;
 }
 
 .mat-card-header {
     justify-content: center;
 }
 
-mat-card .mat-radio-button {
+mat-card .mat-radio-button{
     margin: 0 12px;
   }
+.mat-card-content {
+    align-items: center;
+}
+.mat-form-field,button,mat-radio-group {
+    margin: 0 12px;
+    /* max-width: 40%; */
+    align-self: center;
+    width: 40%;
+}
