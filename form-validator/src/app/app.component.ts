@@ -33,6 +33,7 @@ export class AppComponent implements OnInit {
   displayedColumns: string[] = ['name', 'age', 'gender', 'role'];
   dataSource = new MatTableDataSource(Users_Data);
   @ViewChild(RegisterationComponent) registerData: RegisterationComponent;
+  loginInfo: any;
 
   constructor(private fb:FormBuilder,private location: Location,private router: Router){}
   ngOnInit() {
@@ -67,6 +68,12 @@ export class AppComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+
+  login(data) {
+    this.loginInfo = data;
+    // console.log(this.registrationInfo);
+    
   }
 
 }

@@ -19,6 +19,7 @@ export class RegisterationComponent implements OnInit {
   ];
   selectedTechStack=[];
   registrationInfo: any;
+
   constructor(private fb:FormBuilder){}
 
   ngOnInit() {
@@ -59,7 +60,7 @@ export class RegisterationComponent implements OnInit {
   register(data) {
     this.registrationInfo = data;
     this.registerData.emit(this.registrationInfo);
-    console.log(this.registrationInfo);
+    // console.log(this.registrationInfo);
     
   }
 

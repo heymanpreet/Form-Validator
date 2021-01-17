@@ -62,7 +62,9 @@
       <hr>
 
       <button mat-raised-button [disabled]="registerForm.invalid" color="primary" (click)= "register(registerForm.value)">Register</button>
-
+      <mat-error *ngIf="registrationInfo" style="color: green;text-align: center;margin: 10px;">
+        Registration Successfull.
+      </mat-error>
     </form>
   </mat-card-content>
 

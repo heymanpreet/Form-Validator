@@ -48,7 +48,10 @@
 
             <hr>
 
-            <button mat-raised-button [disabled]="loginForm.invalid" color="primary">Login</button>
+            <button mat-raised-button [disabled]="loginForm.invalid" (click)= "login(loginForm.value)" color="primary">Login</button>
+            <mat-error *ngIf="loginInfo" style="color: green;text-align: center;margin: 10px;">
+              Login Success.
+            </mat-error>
 
           </form>
         </mat-card-content>
